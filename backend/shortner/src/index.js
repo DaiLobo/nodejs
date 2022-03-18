@@ -39,7 +39,7 @@ app.use(express.json()); // fazer o express saber receber um json
 //para substituir o middleware de cima, foi usado o morgan
 app.use(morgan("dev"));
 
-app.use(UserRouter); //quando se trabalha com router é muito usado o middleware
+app.use("/api", UserRouter); //quando se trabalha com router é muito usado o middleware
 app.use(ShortnerRouter);
 
 //criar serviço para o express ouça e fique executando
