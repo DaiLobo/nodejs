@@ -1,7 +1,10 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import UserModel from "../model/UserModel.js";
+import dotenv from 'dotenv';
 
+dotenv.config();
+const JWT_SECRET = process.env.JWT_SECRET;
 class UserController { //exportando as seguintes funções, que são as 5 do CRUD:
     
     hashPassword(password){
@@ -25,7 +28,9 @@ class UserController { //exportando as seguintes funções, que são as 5 do CRU
         }
 
         if (bcrypt.compareSync(password, user.password)){ //transformar um usuário em um token
-            const token = jwt.sign(user, "pitang-trainee");
+            delete user.password; //para apagar só do objeto, do banco não
+
+            const token = jwt.sign(user, JWT_SECRET);
             return response.send({token});
         }
         response.status(404).send({message: "Password Invalid"});

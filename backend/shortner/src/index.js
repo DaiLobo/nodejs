@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 import UserRouter from "./routes/UserRouter.js";
 import ShortnerRouter from "./routes/ShortnerRouter.js";
+import {AuthMiddleware} from "./middlewares/auth.middleware.js";
 
 
 dotenv.config();
@@ -38,6 +39,8 @@ app.use(express.json()); // fazer o express saber receber um json
 // })
 //para substituir o middleware de cima, foi usado o morgan
 app.use(morgan("dev"));
+
+app.use(AuthMiddleware); //middle para fazer o controle da autenticação das rotas
 
 app.use("/api", UserRouter); //quando se trabalha com router é muito usado o middleware
 app.use(ShortnerRouter);
