@@ -1,11 +1,36 @@
-import crypto from "crypto"
-import UserModel from "../model/UserModel.js"
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import UserModel from "../model/UserModel.js";
 
 class UserController { //exportando as seguintes funções, que são as 5 do CRUD:
+    
+    hashPassword(password){
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(password, salt);
+    
+        return hash;
+    }
+    
     async index (request, response) {
         const users = await UserModel.find().lean(); //lean tira todas as funcões e só traz os dados
-        response.send(users) 
+        response.send(users);
     }
+
+    async login(request, response){
+        const {email, password} = request.body; //enviando no corpo da requisição o email e a senha
+        const user = await UserModel.findOne({email}).lean();//traz algum registro a partir de qqr informação
+
+        if(!user){
+            return response.status(404).send({message: "User not found"})
+        }
+
+        if (bcrypt.compareSync(password, user.password)){ //transformar um usuário em um token
+            const token = jwt.sign(user, "pitang-trainee");
+            return response.send({token});
+        }
+        response.status(404).send({message: "Password Invalid"});
+    }
+
     async getOne (request, response) {
         const id = request.params.id;
         const user = await UserModel.findById(id);
@@ -13,16 +38,18 @@ class UserController { //exportando as seguintes funções, que são as 5 do CRU
         if (user){
             return response.send(user); //params é um objeto, dado isso pode ter vários paramatros
         } 
-        response.status(404).send({ message: "User not exist" })
+        response.status(404).send({ message: "User not exist" });
         
     }
+
     async store (request, response) {
         const {email, name, password, phones} = request.body; //com spread se fosse adicionado mais atributos o banco n relacional iria adicionar, p evitar foi feito dessa outra forma
         //desestruturado e abaixo assinado
-        const user = await UserModel.create({email, name, password, phones});
+        const user = await UserModel.create({email, name, password: this.hashPassword(password), phones});
      
         response.send(user);
     }
+
     async remove (request, response) {
         const {id} = request.params;
         const user = await UserModel.findById(id);
@@ -32,9 +59,10 @@ class UserController { //exportando as seguintes funções, que são as 5 do CRU
             return response.send({message: "User deleted"});
         }
         
-        response.status(404).send({message: "User not found"})
+        response.status(404).send({message: "User not found"});
     
     }
+
     async update (request, response) {
         const {id} = request.params;
         //validação nos campos
@@ -43,14 +71,14 @@ class UserController { //exportando as seguintes funções, que são as 5 do CRU
         await UserModel.findByIdAndUpdate(id, {
             name,
             email,
-            password,
+            password: this.hashPassword(password),
             phones,
         })
     
         // const userIndex = users.findIndex((user) => user.id === id); //se não encontrar ele retorna -1
     
         if(!user){
-            return response.status(404).send({message: "User not found"})
+            return response.status(404).send({message: "User not found"});
         }
     
         // if(name && email){ //sem isso, se o usuario não passagem nenhum valor para os campos, os valores iam zerar
