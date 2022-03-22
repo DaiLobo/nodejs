@@ -4,7 +4,7 @@ import ShortnerModel from "../model/ShortnerModel.js";
 
 class ShortnerController {
     async index(request, response) {
-        const shortners = await ShortnerModel.find().lean(); //lean traz apenas o dados
+        const shortners = await ShortnerModel.find({user: request.loggedUser._id}).lean(); //lean traz apenas o dados
         //shotnermodel é uma promise, entao precisa do await e do async
         response.json({shortners});
     }
@@ -35,6 +35,7 @@ class ShortnerController {
         //split pega a string q crypto retorna e separa em posições de array a cada -
         
         const shortner = await ShortnerModel.create({
+            user: request.loggedUser._id,
             hash,
             name,
             link,

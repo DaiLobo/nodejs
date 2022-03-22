@@ -8,7 +8,7 @@ const ShortnerSchema = mongoose.Schema({
     expired: { type: Boolean, default: false },
     expiredDate: Date, //new Date().toISOString()
     name: String,
-    userId: { type: mongoose.Schema.Types.ObjectId, ref : "user"},
+    user: { type: mongoose.Schema.Types.ObjectId, ref : "user"},
 }, {
     timestamp: true,
 });

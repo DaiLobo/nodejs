@@ -16,10 +16,11 @@ export const AuthMiddleware = (request, response, next) => { //usa como intercep
         response.status(401).send({message: "Authorization not found"});
     }
 
-    const [, token] = authorization.split(" ");
+    const [, token] = authorization.split(' ');
 
     try {
-        jsonwebtoken.verify(token, JWT_SECRET);
+        const payload = jsonwebtoken.verify(token, JWT_SECRET);
+        request.loggedUser = payload;
     } catch (error) {
         return response.status(401).send({message: "Token Invalid"});
     }
