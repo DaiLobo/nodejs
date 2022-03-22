@@ -6,7 +6,7 @@ class ShortnerController {
     async index(request, response) {
         const shortners = await ShortnerModel.find({user: request.loggedUser._id}).lean(); //lean traz apenas o dados
         //shotnermodel é uma promise, entao precisa do await e do async
-        response.json({shortners});
+        response.json(shortners);
     }
     
     async getOne(request, response) {
@@ -15,7 +15,7 @@ class ShortnerController {
         try {
             const shortner = await ShortnerModel.findById(id);
 
-            if(shortner){
+            if(shortner || shortner.user === request.loggedUser._id){ //conferindo autenticação
                 return response.json({shortner});
             }
             
@@ -42,21 +42,31 @@ class ShortnerController {
             expiredDate,
         });
 
-        response.json({shortner});
+        response.json(shortner);
     }
 
     async update(request, response) {
         const { id } = request.params;
         const {name, link, expiredDate} = request.body;
 
-        const shortner = await ShortnerModel.findByIdAndUpdate(id, {
+        const shortner = await ShortnerModel.findByIdAndUpdate(
+            {
+                id,
+                user: request.loggedUser._id
+            }, {
             name,
             link,
             expiredDate,
-        },
-        {new: true});
+            },
+            {new: true}
+        );
 
-        response.json({shortner});
+        if (!shortner)
+        {
+            throw Error("Not found");
+        }
+
+        response.json(shortner);
     }
 
     async remove (request, response) {
@@ -65,12 +75,14 @@ class ShortnerController {
         try {
             const shortner = await ShortnerModel.findById(id);
 
-            if(shortner){
+            if(shortner || shortner.user === request.loggedUser._id){ //conferindo autenticação
                 await shortner.remove();
             }
         } catch(error) {
             response.status(400).json({message: "Unexpected Error"}); //erro de logica
         }
+
+        return response.json({ message: "Link removed" });
     }
 
     async redirect(request, response){
@@ -83,6 +95,11 @@ class ShortnerController {
             userAgentDetails,
         }
         const shortner = await ShortnerModel.findOne({hash});
+
+        if (!shortner)
+        {
+            throw Error("Not found");
+        }
 
         if(shortner){
 

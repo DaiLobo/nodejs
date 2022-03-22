@@ -34,16 +34,20 @@ class UserController { //exportando as seguintes funções, que são as 5 do CRU
             return response.send({token});
         }
         response.status(404).send({message: "Password Invalid"});
+
+        // (API não costuma ter logout, só front-end)
     }
 
     async getOne (request, response) {
         const id = request.params.id;
+        
         const user = await UserModel.findById(id);
 
-        if (user){
-            return response.send(user); //params é um objeto, dado isso pode ter vários paramatros
-        } 
-        response.status(404).send({ message: "User not exist" });
+        if (user) {
+            return response.send(user)
+        }
+
+        response.status(404).send({ message: 'User not exist' })
         
     }
 
@@ -73,12 +77,15 @@ class UserController { //exportando as seguintes funções, que são as 5 do CRU
         //validação nos campos
         const {name, email, password, phones} = request.body;
 
-        await UserModel.findByIdAndUpdate(id, {
+        const user = await UserModel.findByIdAndUpdate(
+            id,
+            {
             name,
             email,
             password: this.hashPassword(password),
             phones,
-        })
+            }
+        );
     
         // const userIndex = users.findIndex((user) => user.id === id); //se não encontrar ele retorna -1
     
@@ -95,10 +102,40 @@ class UserController { //exportando as seguintes funções, que são as 5 do CRU
         //     };
         
         // }
-    
+
         response.send({ user });
     
     }
 }
+
+    // updateOne: (request, response) =>
+    // {
+    //     const userIndex = idSearch(request.params.id);
+
+    //     if (userIndex == -1)  // usuário não encontrado
+    //     {
+    //         return response.status(404).send("Not found");
+    //     }
+
+    //     request.body.id = users[userIndex].id;
+    //     // P/ não sobrescrever o ID caso o usuário forneça um atributo
+    //     // com essa chave (estou presumindo que alterar externamente o 
+    //     // ID não seria permitido)
+
+    //     request.body.name = request.body.name || users[userIndex].name;
+    //     request.body.email = request.body.email || users[userIndex].email;
+    //     // P/ não apagar nome ou email caso o usuário não forneça
+    //     // novos valores (estou sempre supondo que esses seriam os
+    //     // atributos mínimos obrigatórios)
+
+    //     users[userIndex] = Object.assign(users[userIndex], request.body);
+    //     // P/ copiar inclusive outras propriedades passadas
+
+    //     return response.send(users[userIndex]);
+
+    //     // E se tivesse só name e email? Eu deveria aceitar, ou sugerir
+    //     // o método PUT nesse caso?
+
+    // },  // PATCH
 
 export default UserController;
