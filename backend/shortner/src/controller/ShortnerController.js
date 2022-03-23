@@ -118,3 +118,11 @@ class ShortnerController {
 }
 
 export default ShortnerController;
+
+// Test
+// user: 623a376285785bdfb4a23051
+// token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhMzc2Mjg1Nzg1YmRmYjRhMjMwNTEiLCJuYW1lIjoiVGVzdCBVc2VyIiwiZW1haWwiOiJ0ZXN0ZUB0ZXN0LmNvbSIsInJvbGUiOiJVc2VyIiwicGhvbmVzIjpbXSwiX192IjowLCJpYXQiOjE2NDc5ODI0NTR9.quRvSGL5yx4qZKLIq4uad5r4ElL4IxR9FHzfaZPwbBc
+
+// Macilene
+// user: 623a4afb93ffab6c90687b35
+// token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhNGFmYjkzZmZhYjZjOTA2ODdiMzUiLCJuYW1lIjoiTWFjaWxlbmUiLCJlbWFpbCI6Im1hY2lsZW5lQGdtYWlsLmNvbSIsInJvbGUiOiJVc2VyIiwicGhvbmVzIjpbXSwiX192IjowLCJpYXQiOjE2NDc5ODc0ODB9.PetLgGfDOp3iOreyMx6aqtrjQ1AF-Xs5VVCz1sTnQtM
