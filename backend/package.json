@@ -6,6 +6,7 @@
   "repository": "https://github.com/DaiLobo/nodejs.git",
   "author": "Diana <diana45637@live.com>",
   "license": "MIT",
+  "type": "module",
   "workspaces": {
     "packages": [
       "packages/*"
