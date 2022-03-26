@@ -10,13 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        String   @id @default(uuid())
-  email     String
-  name      String
-  birthDate DateTime
-  reviewer  Boolean? @default(false)
-}
 
 enum SessionRoom {
   COMMON
@@ -29,6 +22,15 @@ enum Classification {
   GENERAL_AUDIENCE
   PARENT_GUIDANCE_SUGGESTED
   RESTRICTED
+
+}
+model User {
+  id        String   @id @default(uuid())
+  email     String
+  name      String
+  password  String
+  birthDate DateTime
+  reviewer  Boolean? @default(false)
 }
 
 model Movie {
