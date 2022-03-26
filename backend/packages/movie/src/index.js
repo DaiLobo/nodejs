@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import cors from "cors";
 import morgan from "morgan";
-import routes from "./router/routes.js" //rota que contem todas as outras rotas
+import routes from "./routes/routes.js" //rota que contem todas as outras rotas
 import e from "cors";
 
 dotenv.config()

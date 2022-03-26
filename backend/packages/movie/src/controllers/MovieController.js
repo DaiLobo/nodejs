@@ -1,8 +1,9 @@
 import Controller from "./Controller.js";
-import prisma from "../prisma.js";
 
 class MovieController extends Controller{
-    
+    constructor () {
+        super("movie")
+    }
 }
 
 export default MovieController

@@ -1,39 +1,48 @@
+import prismaClient from "../prisma.js";
+
 class Controller {
+
+    constructor(model){ //para acessar de forma dinamico o registrycontroller, usercontroller e tals
+        this.model = model;
+        this.client = prismaClient[model] //p acessar de forma dinamica passar valor assim, ja q prismaclient é objeto pode-se usar o colchetes
+    }
+
+    /**
+     * @description Get One Registry by Id according to Model name
+     * @param {*} request 
+     * @param {*} response 
+     */
+
     async index(request, response) {
-        const movies = await prisma.movie.findMany();
-        response.json(movies);
+        const registries = await this.client.findMany();
+        response.json(registries);
     }
     async getOne(request, response) {
         const id = request.params.id;
-        const movie = await prisma.movie.findUnique({where: {id}});
+        const registry = await this.client.findUnique({where: {id}});
 
-        if(!movie){
+        if(!registry){
             return response.status(404).send({message: "Registry not found"});
         }
 
-        response.json(movie)
+        response.json(registry)
     }
     async store(request, response) {
-        const {name, description, duration, classification} = request.body;
-        const movie = await prisma.movie.create({data: {
-            name,
-            description,
-            duration,
-            classification: classification || undefined //ou usar ?? conferir se é nulo ou undefined para pegar o valor padrão
-        }});
-        response.json(movie);
+        const registry = await this.client.create({
+            data: request.body
+            });
+        response.json(registry);
     }
     async update(request, response) {
         const {id} = request.params;
-        const {name, description, duration, classification} = request.body;
 
         try {
-            const movie = await prisma.movie.update(
+            const registry = await this.client.update(
             {
-                data: {name, description, duration, classification}, 
+                data: request.body, 
                 where: {id}
             })
-        response.json(movie);
+        response.json(registry);
         } catch {
             response.status(404).json({message: "Registry not found"})
         }
@@ -42,7 +51,7 @@ class Controller {
         const {id} = request.params;
         
         try {
-            await prisma.movie.delete({where: {id}});
+            await this.client.delete({where: {id}});
             response.json({message: "Registry removed"});
         }
         catch (error) {
