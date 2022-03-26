@@ -11,9 +11,40 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  email String
-  name String
+  id        String   @id @default(uuid())
+  email     String
+  name      String
   birthDate DateTime
-  reviewer Boolean? @default(false)
+  reviewer  Boolean? @default(false)
+}
+
+enum SessionRoom {
+  COMMON
+  IMAX
+  DLUX
+  XD
+}
+
+enum Classification {
+  GENERAL_AUDIENCE
+  PARENT_GUIDANCE_SUGGESTED
+  RESTRICTED
+}
+
+model Movie {
+  id             String          @id @default(uuid())
+  name           String
+  description    String
+  classification Classification? @default(GENERAL_AUDIENCE)
+  duration       Int
+  Session        Session[]
+}
+
+model Session {
+  id          String      @id @default(uuid())
+  sessionDate DateTime
+  movie       Movie       @relation(fields: [movieId], references: [id])
+  room        SessionRoom @default(COMMON)
+
+  movieId String
 }
