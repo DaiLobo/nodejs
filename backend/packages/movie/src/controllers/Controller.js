@@ -1,10 +1,15 @@
 import prismaClient from "../prisma.js";
+import logger from "../utils/logger.js"
 
 class Controller {
 
     constructor(model){ //para acessar de forma dinamico o registrycontroller, usercontroller e tals
         this.model = model;
         this.client = prismaClient[model] //p acessar de forma dinamica passar valor assim, ja q prismaclient é objeto pode-se usar o colchetes
+
+        if(!this.client) { //validando model
+            logger.error(`Model: ${model} not found on Prisma Schema`)
+        }
     }
 
     /**
@@ -44,6 +49,7 @@ class Controller {
             })
         response.json(registry);
         } catch {
+            logger.error(`Registry with id: ${id} not found`)
             response.status(404).json({message: "Registry not found"})
         }
     }
@@ -55,6 +61,7 @@ class Controller {
             response.json({message: "Registry removed"});
         }
         catch (error) {
+            logger.error(`Registry with id: ${id} not found`)
             response.status(404).json({message: "Registry not removed"})
         }
     }
