@@ -32,10 +32,25 @@ model Movie {
   Session        Session[]
 }
 
+model SessionSeats {
+  id      String   @id @default(uuid())
+  line    String
+  column  Int
+  type    SeatType @default(STANDARD)
+  state   Boolean  @default(false)
+  disable Boolean  @default(false)
+}
+
+enum SeatType {
+  STANDARD
+  WHEELCHAIR
+  DOUBLESEAT
+}
+
 model Session {
   id          String      @id @default(uuid())
   price       Float
-  sessionDate DateTime
+  sessionDate DateTime    @default(now())
   room        SessionRoom @default(COMMON)
   movieId     String
   movie       Movie       @relation(fields: [movieId], references: [id])
