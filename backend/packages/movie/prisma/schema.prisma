@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,27 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-enum SessionRoom {
-  COMMON
-  IMAX
-  DLUX
-  XD
+enum UserRole {
+  ADMINISTRATOR
+  USER
 }
 
-enum Classification {
-  GENERAL_AUDIENCE
-  PARENT_GUIDANCE_SUGGESTED
-  RESTRICTED
-
-}
 model User {
   id        String   @id @default(uuid())
   email     String
   name      String
-  password  String
+  role      UserRole @default(USER)
   birthDate DateTime
   reviewer  Boolean? @default(false)
+  password  String
+  Ticket    Ticket[]
 }
 
 model Movie {
@@ -44,9 +34,43 @@ model Movie {
 
 model Session {
   id          String      @id @default(uuid())
+  price       Float
   sessionDate DateTime
-  movie       Movie       @relation(fields: [movieId], references: [id])
   room        SessionRoom @default(COMMON)
+  movieId     String
+  movie       Movie       @relation(fields: [movieId], references: [id])
+  Ticket      Ticket[]
+}
 
-  movieId String
+enum SessionRoom {
+  COMMON
+  IMAX
+  DLUX
+  XD
+}
+
+enum Classification {
+  GENERAL_AUDIENCE
+  PARENT_GUIDANCE_SUGGESTED
+  RESTRICTED
+}
+
+enum TicketCategory {
+  FREE
+  PROMO
+  STANDARD
+  HALF_PRICE
+}
+
+model Ticket {
+  id            String         @id @default(uuid())
+  category      TicketCategory @default(STANDARD)
+  paymentStatus Boolean        @default(false)
+  session       Session        @relation(fields: [sessionId], references: [id])
+  sessionId     String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+
 }

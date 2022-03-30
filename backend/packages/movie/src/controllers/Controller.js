@@ -27,6 +27,7 @@ class Controller {
         const registry = await this.client.findUnique({where: {id}});
 
         if(!registry){
+            logger.error(`Registry with id: ${id} not found`)
             return response.status(404).send({message: "Registry not found"});
         }
 

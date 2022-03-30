@@ -1,5 +1,5 @@
 import winston from "winston"
-import WinstonDailyRotateFile from "winston-daily-rotate-file"
+import WinstonDailyRotateFile from "winston-daily-rotate-file" //gera um arquivo com a data de hoje
 
 const logger = winston.createLogger({
     format: winston.format.combine(
@@ -14,7 +14,7 @@ const logger = winston.createLogger({
             datePattern: "YYYY-MM-DD",
             filename: "./log/app-%DATE%.log",
             maxFiles: "3d", //tempo de armazenamento
-            maxSize: "10m"
+            maxSize: "10m",
         })
     ]
 })
