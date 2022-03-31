@@ -33,12 +33,14 @@ model Movie {
 }
 
 model SessionSeats {
-  id      String   @id @default(uuid())
-  line    String
-  column  Int
-  type    SeatType @default(STANDARD)
-  state   Boolean  @default(false)
-  disable Boolean  @default(false)
+  id        String   @id @default(uuid())
+  line      String
+  column    Int
+  type      SeatType @default(STANDARD)
+  state     Boolean  @default(false)
+  disable   Boolean  @default(false)
+  Session   Session? @relation(fields: [sessionId], references: [id])
+  sessionId String?
 }
 
 enum SeatType {
@@ -48,13 +50,14 @@ enum SeatType {
 }
 
 model Session {
-  id          String      @id @default(uuid())
-  price       Float
-  sessionDate DateTime    @default(now())
-  room        SessionRoom @default(COMMON)
-  movieId     String
-  movie       Movie       @relation(fields: [movieId], references: [id])
-  Ticket      Ticket[]
+  id           String         @id @default(uuid())
+  price        Float
+  sessionDate  DateTime       @default(now())
+  room         SessionRoom    @default(COMMON)
+  SessionSeats SessionSeats[]
+  movieId      String
+  movie        Movie          @relation(fields: [movieId], references: [id])
+  Ticket       Ticket[]
 }
 
 enum SessionRoom {
