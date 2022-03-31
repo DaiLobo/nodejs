@@ -3,8 +3,12 @@ import logger from "../utils/logger.js"
 
 class Controller {
 
-    constructor(model){ //para acessar de forma dinamico o registrycontroller, usercontroller e tals
+    constructor(model, prismaOptions = {
+        findMany: {}
+    }){ //para acessar de forma dinamico o registrycontroller, usercontroller e tals
         this.model = model;
+        this.prismaClient = prismaClient;
+        this.prismaOptions = prismaOptions
         this.client = prismaClient[model] //p acessar de forma dinamica passar valor assim, ja q prismaclient é objeto pode-se usar o colchetes
 
         if(!this.client) { //validando model
@@ -19,9 +23,10 @@ class Controller {
      */
 
     async index(request, response) {
-        const registries = await this.client.findMany();
+        const registries = await this.client.findMany(this.prismaOptions.findMany);
         response.json(registries);
     }
+
     async getOne(request, response) {
         const id = request.params.id;
         const registry = await this.client.findUnique({where: {id}});
@@ -33,12 +38,15 @@ class Controller {
 
         response.json(registry)
     }
+
     async store(request, response) {
         const registry = await this.client.create({
             data: request.body
-            });
+        });
+
         response.json(registry);
     }
+
     async update(request, response) {
         const {id} = request.params;
 
@@ -54,6 +62,7 @@ class Controller {
             response.status(404).json({message: "Registry not found"})
         }
     }
+
     async remove(request, response) {
         const {id} = request.params;
         

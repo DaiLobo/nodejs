@@ -17,13 +17,15 @@
     "helmet": "^5.0.2",
     "joi": "^17.6.0",
     "morgan": "^1.10.0",
-    "winston": "^3.6.0"
+    "winston": "^3.6.0",
+    "winston-daily-rotate-file":"4.6.1"
   },
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "prisma-generate": "prisma generate",
     "prisma-migrate-dev": "npx prisma migrate dev",
-    "prisma-studio": "npx prisma studio"
+    "prisma-studio": "npx prisma studio",
+    "prisma-seed": "node prisma/seed.js"
   }
 }
