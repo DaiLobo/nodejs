@@ -1,6 +1,7 @@
 import Controller from "./Controller.js";
 
 class SessionController extends Controller{
+    
     constructor () {
         super("session", {
             findMany: {
@@ -40,7 +41,7 @@ class SessionController extends Controller{
 
         const { room, sessionDate, price, movieId } = request.body;
 
-        this.prismaClient.session.findMany({include: {SessionSeats: true}})
+        //this.prismaClient.session.findMany({include: {SessionSeats: true}})
 
         request.body = { //sobreescrevendo
             room,

@@ -7,19 +7,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum UserRole {
-  ADMINISTRATOR
-  USER
-}
-
 model User {
   id        String   @id @default(uuid())
   email     String
   name      String
-  role      UserRole @default(USER)
   birthDate DateTime
   reviewer  Boolean? @default(false)
   password  String
+  role      UserRole @default(USER)
   Ticket    Ticket[]
 }
 
@@ -40,26 +35,43 @@ model SessionSeats {
   type      SeatType @default(STANDARD)
   state     Boolean  @default(false)
   disable   Boolean  @default(false)
-  Session   Session? @relation(fields: [sessionId], references: [id])
   sessionId String?
+  Session   Session? @relation(fields: [sessionId], references: [id])
   Ticket    Ticket[]
+}
+
+model Session {
+  id           String         @id @default(uuid())
+  sessionDate  DateTime       @default(now())
+  room         SessionRoom    @default(COMMON)
+  movieId      String
+  price        Float          @default(25)
+  movie        Movie          @relation(fields: [movieId], references: [id])
+  SessionSeats SessionSeats[]
+  Ticket       Ticket[]
+}
+
+model Ticket {
+  id             String         @id @default(uuid())
+  category       TicketCategory @default(STANDARD)
+  paymentStatus  Boolean        @default(false)
+  sessionId      String
+  userId         String
+  sessionSeatsId String
+  session        Session        @relation(fields: [sessionId], references: [id])
+  seat           SessionSeats   @relation(fields: [sessionSeatsId], references: [id])
+  user           User           @relation(fields: [userId], references: [id])
+}
+
+enum UserRole {
+  ADMINISTRATOR
+  USER
 }
 
 enum SeatType {
   STANDARD
   WHEELCHAIR
   DOUBLESEAT
-}
-
-model Session {
-  id           String         @id @default(uuid())
-  price        Float
-  sessionDate  DateTime       @default(now())
-  room         SessionRoom    @default(COMMON)
-  SessionSeats SessionSeats[]
-  movieId      String
-  movie        Movie          @relation(fields: [movieId], references: [id])
-  Ticket       Ticket[]
 }
 
 enum SessionRoom {
@@ -80,19 +92,4 @@ enum TicketCategory {
   PROMO
   STANDARD
   HALF_PRICE
-}
-
-model Ticket {
-  id            String         @id @default(uuid())
-  category      TicketCategory @default(STANDARD)
-  paymentStatus Boolean        @default(false)
-  session       Session        @relation(fields: [sessionId], references: [id])
-  sessionId     String
-
-  user           User         @relation(fields: [userId], references: [id])
-  userId         String
-  seat           SessionSeats @relation(fields: [sessionSeatsId], references: [id])
-  sessionSeatsId String
-
-
 }

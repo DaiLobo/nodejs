@@ -3,8 +3,13 @@ import Joi from 'joi';
 
 class MovieController extends Controller{
     constructor () {
-        super("movie")
+        super("movie", {
+            findMany: {
+                include: {Session:  true}
+            }
+        })
     }
+    //include: {Session: {include: {Ticket: true}}}
 
     //validar os dados da requisição
     store (request, response){
