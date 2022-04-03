@@ -4,11 +4,11 @@ import logger from "../utils/logger.js"
 class Controller {
 
     constructor(model, prismaOptions = {
-        findMany: {}
+        findMany: {},
     }){ //para acessar de forma dinamico o registrycontroller, usercontroller e tals
         this.model = model;
         this.prismaClient = prismaClient;
-        this.prismaOptions = prismaOptions
+        this.prismaOptions = prismaOptions;
         this.client = prismaClient[model] //p acessar de forma dinamica passar valor assim, ja q prismaclient é objeto pode-se usar o colchetes
 
         if(!this.client) { //validando model
@@ -40,11 +40,16 @@ class Controller {
     }
 
     async store(request, response) {
+        try {
         const registry = await this.client.create({
             data: request.body
         });
 
         response.json(registry);
+        } catch (error){
+            logger.error(error.message) //fica no nosso arquivo
+            response.status(400).json({message: "Fail to store entity: " + this.model}) //usuario recebe mensagem generica
+        }
     }
 
     async update(request, response) {
@@ -57,7 +62,7 @@ class Controller {
                 where: {id}
             })
         response.json(registry);
-        } catch {
+        } catch (error) {
             logger.error(`Registry with id: ${id} not found`)
             response.status(404).json({message: "Registry not found"})
         }

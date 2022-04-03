@@ -115,3 +115,20 @@
 {"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-01T00:21:36.722Z"}
 {"level":"info","message":"Listening PORT: 3000","timestamp":"2022-04-01T00:21:36.748Z"}
 {"level":"http","message":"GET /api/movie 200 731.557 ms - 1402","timestamp":"2022-04-01T00:21:41.022Z"}
+{"level":"http","message":"GET /api/user 200 198.426 ms - 489","timestamp":"2022-04-01T01:16:14.959Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-01T01:19:24.946Z"}
+{"level":"info","message":"Listening PORT: 3000","timestamp":"2022-04-01T01:19:25.057Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-01T01:19:37.466Z"}
+{"level":"info","message":"Listening PORT: 3000","timestamp":"2022-04-01T01:19:37.515Z"}
+{"level":"http","message":"GET /api/movie 200 146.833 ms - 1402","timestamp":"2022-04-01T01:19:46.109Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-01T01:25:02.415Z"}
+{"level":"info","message":"Listening PORT: 3000","timestamp":"2022-04-01T01:25:04.113Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-01T01:25:27.716Z"}
+{"level":"info","message":"Listening PORT: 3000","timestamp":"2022-04-01T01:25:27.769Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-01T01:27:38.611Z"}
+{"level":"info","message":"Listening PORT: 3000","timestamp":"2022-04-01T01:27:38.648Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-01T01:27:43.019Z"}
+{"level":"info","message":"Listening PORT: 3000","timestamp":"2022-04-01T01:27:43.087Z"}
+{"level":"http","message":"GET /api/movie 200 2875.347 ms - 1402","timestamp":"2022-04-01T01:31:41.299Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-01T01:32:05.053Z"}
+{"level":"info","message":"Listening PORT: 3000","timestamp":"2022-04-01T01:32:05.091Z"}
