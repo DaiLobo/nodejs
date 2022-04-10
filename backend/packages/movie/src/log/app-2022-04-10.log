@@ -49,3 +49,15 @@
 {"level":"http","message":"POST /api/user 400 9.870 ms - 40","timestamp":"2022-04-10T05:38:38.761Z"}
 {"level":"error","message":"\nInvalid `prisma.user.create()` invocation:\n\n{\n  data: {\n    name: 'Luiz Allan',\n    email: 'allankz@gmail.com',\n    password: '12345',\n    role: 'USER',\n    ~~~~\n    birthDate: '2022-04-06T03:00:00.000Z',\n    reviewer: true\n  }\n}\n\nUnknown arg `role` in data.role for type UserCreateInput. Did you mean `name`? Available args:\ntype UserCreateInput {\n  id?: String\n  email: String\n  name: String\n  birthDate: DateTime\n  reviewer?: Boolean | Null\n  password: String\n}\n\n","timestamp":"2022-04-10T05:39:18.944Z"}
 {"level":"http","message":"POST /api/user 400 7.400 ms - 40","timestamp":"2022-04-10T05:39:18.949Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-10T17:54:38.835Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-10T17:54:39.707Z"}
+{"level":"http","message":"GET / 200 250.924 ms - 35","timestamp":"2022-04-10T17:57:13.947Z"}
+{"level":"http","message":"GET /favicon.ico 404 2.245 ms - 150","timestamp":"2022-04-10T17:57:14.308Z"}
+{"level":"http","message":"GET /api/user 304 1920.035 ms - -","timestamp":"2022-04-10T17:57:50.910Z"}
+{"level":"http","message":"GET /api/movie 200 15468.170 ms - 1402","timestamp":"2022-04-10T17:57:51.259Z"}
+{"level":"http","message":"GET /api/user 304 5.360 ms - -","timestamp":"2022-04-10T17:57:58.920Z"}
+{"level":"http","message":"GET /api/movie 200 625.431 ms - 1402","timestamp":"2022-04-10T18:00:05.182Z"}
+{"level":"http","message":"GET /api/user 200 7.644 ms - 490","timestamp":"2022-04-10T18:00:10.461Z"}
+{"level":"error","message":"\nInvalid `prisma.user.create()` invocation:\n\n{\n  data: {\n    email: 'allankz@gmail.com',\n    name: 'Luiz Samuel',\n    birthDate: '2001-04-01T00:00:00.000Z',\n    reviewer: true,\n    password: '1234',\n    role: 'USER'\n    ~~~~\n  }\n}\n\nUnknown arg `role` in data.role for type UserCreateInput. Did you mean `name`? Available args:\ntype UserCreateInput {\n  id?: String\n  email: String\n  name: String\n  birthDate: DateTime\n  reviewer?: Boolean | Null\n  password: String\n}\n\n","timestamp":"2022-04-10T18:02:38.431Z"}
+{"level":"http","message":"POST /api/user 400 2725.699 ms - 40","timestamp":"2022-04-10T18:02:38.436Z"}
+{"level":"http","message":"POST /api/user 200 1365.918 ms - 167","timestamp":"2022-04-10T18:03:13.085Z"}
