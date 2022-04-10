@@ -1,0 +1,79 @@
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:23:03.796Z"}
+{"level":"info","message":"Listening PORT: 3000","timestamp":"2022-04-09T02:23:04.804Z"}
+{"level":"http","message":"GET /static/js/bundle.js 404 8.884 ms - 158","timestamp":"2022-04-09T02:24:18.812Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:24:55.917Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:24:55.942Z"}
+{"level":"http","message":"GET / 200 5.867 ms - 35","timestamp":"2022-04-09T02:25:41.913Z"}
+{"level":"http","message":"GET /favicon.ico 404 2.860 ms - 150","timestamp":"2022-04-09T02:25:42.970Z"}
+{"level":"http","message":"GET /movie 404 1.027 ms - 144","timestamp":"2022-04-09T02:25:53.571Z"}
+{"level":"http","message":"GET /movies 404 0.393 ms - 145","timestamp":"2022-04-09T02:25:57.486Z"}
+{"level":"http","message":"GET /user 404 0.675 ms - 143","timestamp":"2022-04-09T02:26:01.271Z"}
+{"level":"http","message":"GET / 304 1.010 ms - -","timestamp":"2022-04-09T02:26:07.013Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:29:58.173Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:29:58.199Z"}
+{"level":"http","message":"GET /user 404 7.745 ms - 143","timestamp":"2022-04-09T02:30:41.783Z"}
+{"level":"http","message":"GET /api/user 200 1922.271 ms - 491","timestamp":"2022-04-09T02:36:44.263Z"}
+{"level":"http","message":"GET /api/movie 200 148.785 ms - 1402","timestamp":"2022-04-09T02:37:24.467Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:39:18.469Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:39:18.529Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:39:41.325Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:39:41.348Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:39:52.385Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:39:52.413Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:42:18.487Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:42:18.542Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:42:24.069Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:42:24.094Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:43:06.726Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:43:06.757Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:48:46.549Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:48:46.646Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:49:17.305Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:49:17.333Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:49:27.007Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:49:27.033Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:49:50.350Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:49:50.385Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:49:52.425Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:49:52.447Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:51:47.681Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:51:47.706Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:52:21.012Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:52:21.060Z"}
+{"level":"http","message":"GET /api/session 200 90.999 ms - 601","timestamp":"2022-04-09T02:52:23.915Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:52:35.166Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:52:35.195Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:52:39.122Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:52:39.160Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:52:45.198Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:52:45.229Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:52:48.200Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:52:48.239Z"}
+{"level":"http","message":"GET /api/session 304 83.804 ms - -","timestamp":"2022-04-09T02:52:50.388Z"}
+{"level":"http","message":"GET /api/user 304 10.226 ms - -","timestamp":"2022-04-09T02:52:53.587Z"}
+{"level":"http","message":"GET /api/movie 304 23.848 ms - -","timestamp":"2022-04-09T02:52:58.767Z"}
+{"level":"http","message":"GET /api/session 304 7.556 ms - -","timestamp":"2022-04-09T02:53:03.762Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:54:25.581Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:54:25.618Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:54:29.615Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:54:29.641Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:54:55.664Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:54:55.709Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:54:57.684Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:54:57.714Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:55:16.515Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:55:16.577Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:55:17.833Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:55:17.859Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:55:41.815Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:55:41.845Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:55:43.629Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:55:43.661Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:55:45.301Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:55:45.340Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:55:47.239Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:55:47.262Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:57:12.551Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:57:12.590Z"}
+{"level":"error","message":"Model: ticket not found on Prisma Schema","timestamp":"2022-04-09T02:57:35.424Z"}
+{"level":"info","message":"Listening PORT: 3333","timestamp":"2022-04-09T02:57:35.454Z"}

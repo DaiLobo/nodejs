@@ -6,14 +6,23 @@ import prisma from "@prisma/client"; //pegando o enum e transforma em um objeto 
 
 const {SessionRoom, SeatType, SeatStatus} = prisma;
 
+const schema = Joi.object({
+    room: Joi.string().required().valid(...Object.values(SessionRoom)), //pega do objeto todos os valores. se for objeto transforma em array. "..."" p converter em varios parametros
+    sessionDate: Joi.date().required(),
+    price: Joi.number().required().precision(2).positive(),
+    movieId: Joi.string().required()
+});
+
 class SessionController extends Controller{
 
     constructor () {
-        super("session", {
-            findMany: {
-                include: {SessionSeats: true}
-            }
-        })
+        super("session"
+        // , {
+        //     findMany: {
+        //       include: { SessionSeats: true, movie: true },
+        //     },
+        // }
+        );
     }
 
     maxColumns = 12;
@@ -31,7 +40,7 @@ class SessionController extends Controller{
 
                 seats.push({
                 line, column, disable: false,
-                state: false,
+                state: "AVAILABLE",
                 name: `${line}${column}`,
                 type: "STANDARD"
                 })
@@ -41,12 +50,6 @@ class SessionController extends Controller{
         return seats;
     }
 
-    joiSchema = Joi.object({
-        room: Joi.string().required().valid(...Object.values(SessionRoom)), //pega do objeto todos os valores. se for objeto transforma em array. "..."" p converter em varios parametros
-        sessionDate: Joi.date().required(),
-        price: Joi.number().required().precision(2).positive(),
-        movieId: Joi.string().required()
-    })
 
     store(request, response) {
 
@@ -56,7 +59,7 @@ class SessionController extends Controller{
 
         //this.prismaClient.session.findMany({include: {SessionSeats: true}})
 
-        const validation = this.joiSchema.validate({room, sessionDate, price, movieId});
+        const validation = schema.validate({room, sessionDate, price, movieId});
 
         if (validation.error) {
             return response.status(400).json(validation)
@@ -94,7 +97,7 @@ class SessionController extends Controller{
 
         const { room, sessionDate, price, movieId } = request.body;
 
-        const validation = this.joiSchema.validate({room, sessionDate, price, movieId});
+        const validation = schema.validate({room, sessionDate, price, movieId});
 
         if (validation.error) {
             return response.status(400).json(validation)

@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  ADMINISTRATOR
+  USER
+}
+
+
 model User {
   id        String   @id @default(uuid())
   email     String
@@ -61,11 +67,6 @@ model Ticket {
   session        Session        @relation(fields: [sessionId], references: [id])
   seat           SessionSeats   @relation(fields: [sessionSeatsId], references: [id])
   user           User           @relation(fields: [userId], references: [id])
-}
-
-enum UserRole {
-  ADMINISTRATOR
-  USER
 }
 
 enum SeatType {

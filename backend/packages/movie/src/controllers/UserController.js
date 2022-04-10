@@ -1,11 +1,10 @@
 import Controller from "./Controller.js";
-import Joi from 'joi';
 
 class UserController extends Controller{
     constructor () {
-        super("user")
+        super("user");
     }
     // Implementar Login
 }
 
-export default UserController
+export default UserController;

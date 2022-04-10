@@ -7,7 +7,15 @@ const {TicketCategory} = prisma; //pegar as interfaces
 
 class TicketController extends Controller{
     constructor () {
-        super("ticket")
+        super("ticket", {
+            findMany: {
+                include: {
+                    session: { include: { movie: true } },
+                    seat: true,
+                    user: true,
+                },
+            },
+          });
     }
 
     async store(request, response) {
@@ -29,7 +37,7 @@ class TicketController extends Controller{
 
         const ticket = await this.prismaClient.ticket.creat({
             data: {
-                category: "STANDARD",
+                category,
                 paymentStatus: true,
                 user: {connect: {id: userId}},
                 seat: {connect: {id: seatId}},
